@@ -229,6 +229,18 @@ end
 template_file = nil
 
 case main_plugin
+when 'mellanox'
+  template_file =  '/etc/neutron/plugins/mlnx/mlnx_conf.ini'
+
+  template template_file do
+    source 'plugins/mlnx/mlnx_conf.ini.erb'
+    owner node['openstack']['network']['platform']['user']
+    group node['openstack']['network']['platform']['group']
+    mode 00644
+
+    notifies :restart, 'service[neutron-server]', :delayed
+  end
+
 when 'bigswitch'
 
   template_file =  '/etc/neutron/plugins/bigswitch/restproxy.ini'
