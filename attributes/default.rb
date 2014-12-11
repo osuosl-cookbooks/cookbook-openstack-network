@@ -155,8 +155,7 @@ default['openstack']['network']['interface_driver'] = 'neutron.agent.linux.inter
 default['openstack']['network']['core_plugin_map'] = {
    'ovsneutronpluginv2' => 'openvswitch',
    'linuxbridgepluginv2' => 'linuxbridge',
-   'ml2plugin' => 'ml2',
-   'mellanox' => 'mellanox'
+   'ml2plugin' => 'ml2'
 }
 
 # This is used by SUSE to setup the sysconfig neutron initfile
@@ -164,7 +163,6 @@ default['openstack']['network']['plugin_conf_map'] = {
   'ovsneutronpluginv2' => 'openvswitch/ovs_neutron_plugin.ini',
   'linuxbridgepluginv2' => 'linuxbridge/linuxbridge_conf.ini',
   'ml2plugin' => 'ml2/ml2_conf.ini'
-  'mellanox' => 'mlnx/mlnx_conf.ini'
 }
 
 # The agent can use other DHCP drivers.  Dnsmasq is the simplest and requires
