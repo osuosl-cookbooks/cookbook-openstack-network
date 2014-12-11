@@ -155,7 +155,8 @@ default['openstack']['network']['interface_driver'] = 'neutron.agent.linux.inter
 default['openstack']['network']['core_plugin_map'] = {
    'ovsneutronpluginv2' => 'openvswitch',
    'linuxbridgepluginv2' => 'linuxbridge',
-   'ml2plugin' => 'ml2'
+   'ml2plugin' => 'ml2',
+   'mellanox' => 'mellanox'
 }
 
 # This is used by SUSE to setup the sysconfig neutron initfile
@@ -163,6 +164,7 @@ default['openstack']['network']['plugin_conf_map'] = {
   'ovsneutronpluginv2' => 'openvswitch/ovs_neutron_plugin.ini',
   'linuxbridgepluginv2' => 'linuxbridge/linuxbridge_conf.ini',
   'ml2plugin' => 'ml2/ml2_conf.ini'
+  'mellanox' => 'mlnx/mlnx_conf.ini'
 }
 
 # The agent can use other DHCP drivers.  Dnsmasq is the simplest and requires
@@ -892,6 +894,22 @@ default['openstack']['network']['ryu']['firewall_driver'] = 'neutron.agent.linux
 
 # Agent's polling interval in seconds
 default['openstack']['network']['ryu']['polling_interval'] = 2
+
+# ============================= Mellanox Plugin Configuration ===================
+# min_vlan
+default['openstack']['network']['mellanox']['min_vlan'] = '2'
+# max_vlan
+default['openstack']['network']['mellanox']['max_vlan'] = '10'
+
+# network mode
+default['openstack']['network']['mellanox']['network_mod']  = 'eth'
+
+# from ohai.
+# default['openstack']['network']['mellanox']['neutron_port']
+# default['openstack']['network']['mellanox']['neutron_port_ib']
+
+# virt mode
+default['openstack']['network']['mellanox']['virt_mod'] = 'sriov'
 
 # ============================= ML2 Plugin Configuration ===================
 # (ListOpt) List of network type driver entrypoints to be loaded from
