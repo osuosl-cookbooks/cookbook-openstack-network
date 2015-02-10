@@ -9,7 +9,7 @@ debug = <%= node["openstack"]["network"]["debug"] %>
 
 # Example of interface_driver option for OVS based plugins (OVS, Ryu, NEC)
 # that supports L3 agent
-interface_driver = <%= node["openstack"]["network"]["l3_interface_driver"] %>
+interface_driver = <%= node["openstack"]["network"]["l3"]["interface_driver"] %>
 
 # Use veth for an OVS interface or not.
 # Support kernels with limited namespace support
