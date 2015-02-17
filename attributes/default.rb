@@ -954,6 +954,9 @@ default['openstack']['network']['ml2']['vxlan_group'] = ''
 # It should be false when you use nova security group.
 default['openstack']['network']['ml2']['enable_security_group'] = 'True'
 
+default['openstack']['network']['ml2']['vnic_type'] = 'hostdev'
+default['openstack']['network']['ml2']['apply_profile_patch'] = 'True'
+
 # Misc option support
 # Allow additional strings to be added to neutron.conf
 # For example:  ['# Comment', 'key=value']
