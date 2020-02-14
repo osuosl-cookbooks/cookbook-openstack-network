@@ -1,7 +1,9 @@
 # Encoding: utf-8
 #
-# Cookbook Name:: openstack-network
+# Cookbook:: openstack-network
 # Recipe:: fwaas
+#
+# Copyright:: 2020, Oregon State University
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -36,7 +38,7 @@ node.default['openstack']['network_fwaas']['conf'].tap do |conf|
 end
 
 node.default['openstack']['network_l3']['conf'].tap do |conf|
-  conf['AGENT']['extensions'] = 'fwaas'
+  conf['AGENT']['extensions'] = 'fwaas_v2'
 end
 
 # As the fwaas package will be installed anyway, configure its config-file attributes following environment.
@@ -46,7 +48,7 @@ template node['openstack']['network_fwaas']['config_file'] do
   cookbook 'openstack-common'
   owner node['openstack']['network']['platform']['user']
   group node['openstack']['network']['platform']['group']
-  mode 0o0640
+  mode '640'
   variables(
     service_config: service_conf
   )
